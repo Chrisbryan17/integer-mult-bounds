@@ -8,6 +8,7 @@ This is not a complete recursive multiplication/host/tape/all-size theorem.
 """
 from pathlib import Path
 import json
+from p104_native_e8_gate.scripts import native_chart_emitter as E
 P=Path(__file__).resolve().parent
 rows_out={}
 for mode in ('G','I_minus_G_half'):
@@ -71,8 +72,25 @@ for mode in ('G','I_minus_G_half'):
         assert peak['termwise_grid_slope']<=9
         assert peak['scalar_coefficient']<=4
         assert all(row[h]=={h:1} for h in H)
-        if orient=='forward':assert all(row[s]=={s:1} for s in S)
-        else:assert all(row[y]=={y:1} for y in Y)
+        live=E.E8.live
+        if orient=='forward':
+            assert all(row[s]=={s:1} for s in S)
+            for t,root in enumerate(live):
+                expect={Y[t]:1}
+                for j,other in enumerate(live):
+                    g=E.E8.IP[root][other]
+                    if mode!='G':g=2*int(t==j)-g
+                    if g:expect[S[j]]=g
+                assert row[Y[t]]==expect,(mode,orient,t)
+        else:
+            assert all(row[y]=={y:1} for y in Y)
+            for j,other in enumerate(live):
+                expect={S[j]:1}
+                for t,root in enumerate(live):
+                    g=E.E8.IP[root][other]
+                    if mode!='G':g=2*int(t==j)-g
+                    if g:expect[Y[t]]=-g
+                assert row[S[j]]==expect,(mode,orient,j)
         rows_out[mode+'__'+orient]={'peaks':peak,'where':where,
           'max_native_rank':6,
           'sufficient_atomic_fraction_bits_per_tensor_layer':9,
