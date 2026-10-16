@@ -14,7 +14,7 @@ import p104_complete_gram_channel_stdlib as base
 B=base.B
 old=base.old
 ROOTS=base.L
-PIVOTS=[68,52,101,90,88,55,98,102]
+PIVOTS=[23,55,61,62,38,11,26,60]
 Bp=[[B[i][s] for s in PIVOTS] for i in range(8)]
 I,det=base.inverse_exact(Bp)
 assert det in (-1,1) and all(x.denominator==1 for row in I for x in row)
@@ -76,7 +76,7 @@ prep=[['add','S'+str(PIVOTS[i]),'S'+str(s),
       for s in outside for i in range(8)
       for unused in range(abs(int(U[i][s])))]
 unprep=[['add',e[1],e[2],-e[3],zero] for e in reversed(prep)]
-assert len(prep)==394
+assert len(prep)==396
 prefix=old['events'][:156]
 body=old['events'][156:]
 def remap(e):
@@ -98,7 +98,7 @@ events=(prefix+
     unbasis+unprep+
     [['source_from_zero','S'+str(s),ROOTS[s],1] for s in range(104)])
 def count(t):return sum(e[0]==t for e in events)
-assert (count('transport'),count('scale'),count('add'),count('sign'))==(772,16,1302,10)
+assert (count('transport'),count('scale'),count('add'),count('sign'))==(772,16,1298,12)
 assert count('allocate_zero')==count('erase_zero')==0
 out={
  'schema':'p104-source-unimodular-inplace/1',
@@ -109,7 +109,7 @@ out={
  'U_8x104':[[int(x) for x in row] for row in U],
  'basis_unit_ADD':sum(e[0]=='add' for e in basis),
  'basis_SIGN':sum(e[0]=='sign' for e in basis),
- 'prep_unit_ADD':len(prep),'signed_ADD':1302,'signed_NEG':10,
+ 'prep_unit_ADD':len(prep),'signed_ADD':1298,'signed_NEG':12,
  'fractional_scalers':16,'new_clean_aggregate_registers':0,
  'borrowed_dirty_helpers':8,'early_Y_owners':100,
  'native_core_transports':756,'pivot_line_bridges':16,
@@ -118,5 +118,5 @@ out={
  'uniform_all_size':'OPEN','new_kappa':False,'events':events}
 (P/'P104_INPLACE_SOURCE_WORD.json').write_text(
     json.dumps(out,sort_keys=True,separators=(',',':'))+'\n')
-print('PASS_P104_INPLACE_UNIMODULAR det=%d prep=394 ADD=1302 SIGN=10'
+print('PASS_P104_INPLACE_UNIMODULAR det=%d prep=396 ADD=1298 SIGN=12'
       ' clean_extra=0 conditional_rank_mass=1720 no_kappa' % det)
