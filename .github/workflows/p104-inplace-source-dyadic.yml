@@ -59,3 +59,9 @@ jobs:
       - name: Independent 216-integer-input and 46,656-dual proof
         working-directory: research/p104-exact-clifford-factor-pass
         run: python -I -B p104_verify_inplace_dyadic.py
+      - name: Compile fully typed integral I-minus-G-over-two side correction
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_inplace_side.py
+      - name: Independent 216-column full side word, 46656 dual entries and mutants
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_verify_inplace_side.py
