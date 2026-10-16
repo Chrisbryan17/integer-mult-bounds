@@ -80,3 +80,18 @@ For independent literal 512-column phase equality with NumPy, run the existing `
 4. Certify uniform all-size recursion, analytic transfer, rounding, bit-side H1–H5 and strict joint outer inequality. Previous upstream conditional theorem obligations remain; no current end-to-end theorem claim.
 
 **This contribution closes a narrower finite dirty-helper correctness gate, not the complete algorithm.** A negative result on early Y accessibility or price must be recorded as such rather than bypassed with a hidden ZERO/ERASE.
+
+## Further advance: one exact positive native F_r child per transport
+
+The separate `p104_rank_r_native_recipes.py` converts every prior phase-correct signed Clifford recipe into the retained accepted recipe **syntax** `L ; F_r ; R`, with a single **positive** rank-r child and two validated monomial records. The exact relations `C(q,+)^2=X(q)` and `C(q,-)=C(q,+)X(q)` remove the 336 surplus literal C occurrences and replace negative core C directions with explicit, charged X-offset address maps. Each monomial is emitted in the retained `quadratic_rows / linear_Z4 / matrix_rows / offset / phase` schema with symmetric quadratic rows, matching diagonal parity, invertible binary matrix and explicit phase. The independent checker `p104_verify_rank_r_all_columns.py` passed **all 514 recipe × 512 basis-column exact Gaussian-integer comparisons**, with global phase and X-offset mutation controls rejected.
+
+This yields **756 exact positive native rank-r child calls**, with **1,496 total child-rank mass**, unchanged 156 zero-frame cancellation ADDs, and explicit left/right monomial sides per call. There are **168 affine X-coset correction occurrences** before monomial fusion; the actual charged address complexity must be derived from the final records. This is a finite native-operator-factorization result, **not automatically a supplier**. Native endpoint owner legality, early writable target fields, actual address/phase/precision costs, source hosting, tape and physical inverse-transpose remain unverified. In particular, do not treat P,D,X,PH as zero-cost operations or compare against only the restricted unmixed reference when claiming an exponent.
+
+Cold reproduction commands, after generating the phase-correct candidate records:
+
+```bash
+python3 -I -B p104_rank_r_native_recipes.py
+python3 -I -B p104_verify_rank_r_all_columns.py
+```
+
+The first phase-candidate generator is `p104_exact_native_factor.py`, which requires `p104_minimal_symplectic.py` and the pinned source word. This contribution leaves the selected κ unchanged.
