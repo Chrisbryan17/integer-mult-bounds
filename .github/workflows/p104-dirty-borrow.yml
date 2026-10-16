@@ -53,6 +53,9 @@ jobs:
       - name: Independent exact 512-column rank-r native monomial check
         working-directory: research/p104-exact-clifford-factor-pass
         run: python -I -B p104_verify_rank_r_all_columns.py
+      - name: Build strict finite native/scalar/monomial literal subledger
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_rank_r_literal_ledger.py
       - name: Exact all 512 columns for all 514 mixed transport recipes
         working-directory: research/p104-exact-clifford-factor-pass
         run: python -I -B p104_verify_all_columns.py
