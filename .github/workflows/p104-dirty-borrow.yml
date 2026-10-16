@@ -1,0 +1,52 @@
+name: P104 borrowed-dirty zero-chart protocol
+on:
+  push:
+    branches:
+      - research/p104-borrowed-dirty-zero-chart-20261016
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  algebra-dual-moment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/p104-exact-clifford-factor-pass
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install NumPy for all-column exact Gaussian verification
+        run: python -m pip install 'numpy>=2.2,<3'
+      - name: Regenerate source word and enforce SHA-256
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_native_e8_gate/scripts/native_chart_emitter.py
+      - name: Construct arbitrary-dirty trace with no reset
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_dirty_zero_adapter.py
+      - name: Independent 120-symbol event and source-frame verification
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_verify_dirty_adapter.py
+      - name: Independent 120-column transpose-inverse verification
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_verify_dirty_logical_dual.py
+      - name: Independent exact-rational historical moment check
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_independent_mercator_screen.py
+      - name: Compile native phase-correct factors
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: |
+          python -I -B p104_minimal_symplectic.py
+          python -I -B p104_exact_native_factor.py
+      - name: Exact all 512 columns for all 514 mixed transport recipes
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_verify_all_columns.py
