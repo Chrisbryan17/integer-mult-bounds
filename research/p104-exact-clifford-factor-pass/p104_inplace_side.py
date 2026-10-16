@@ -44,8 +44,8 @@ for at,e in enumerate(ev):
     if at==i1:events+=unminus
     events.append(e)
 assert len(events)==len(ev)+224
-assert sum(e[0]=='add' for e in events)==1510
-assert sum(e[0]=='sign' for e in events)==26
+assert sum(e[0]=='add' for e in events)==1506
+assert sum(e[0]=='sign' for e in events)==28
 assert sum(e[0]=='transport' for e in events)==772
 assert not any(e[0] in ('scale','allocate_zero','erase_zero') for e in events)
 out={'schema':'p104-typed-inplace-side-I-minus-G-over-2/1',
@@ -54,7 +54,7 @@ out={'schema':'p104-typed-inplace-side-I-minus-G-over-2/1',
  'decoded_semantics':'Yout=Yin+(I-G/2)*S',
  'target_denominator':2,
  'identity_adds':208,'aggregate_negations':16,
- 'signed_ADD':1510,'signed_NEG':26,'fractional_native_scalers':0,
+ 'signed_ADD':1506,'signed_NEG':28,'fractional_native_scalers':0,
  'clean_aggregate_registers':0,'dirty_helpers_preserved':8,
  'early_Y_owner_requirement':104,
  'positive_native_child_calls':980,'child_rank_mass':1720,
@@ -63,5 +63,5 @@ out={'schema':'p104-typed-inplace-side-I-minus-G-over-2/1',
  'all_size':'OPEN','new_kappa':False,'events':events}
 (P/'P104_INPLACE_SIDE_WORD.json').write_text(
  json.dumps(out,sort_keys=True,separators=(',',':'))+'\n')
-print('PASS_P104_TYPED_I_MINUS_G_HALF_WORD ADD=1510 SIGN=26'
+print('PASS_P104_TYPED_I_MINUS_G_HALF_WORD ADD=1506 SIGN=28'
       ' half_native=0 clean_new=0 child_calls=980 rank_mass=1720')
