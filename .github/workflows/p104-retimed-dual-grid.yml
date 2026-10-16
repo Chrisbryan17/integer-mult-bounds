@@ -1,0 +1,64 @@
+name: P104 retimed physical dual and tensor-grid audit
+on:
+  push:
+    branches:
+      - research/p104-retimed-dual-grid-owner-gates-20261016
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cold-exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/p104-exact-clifford-factor-pass
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install pinned-range NumPy exact integer matrix checker
+        run: python -m pip install 'numpy>=2.2,<3'
+      - name: Regenerate authenticated E8 source and dirty-free numerator compiler
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: |
+          python -I -B p104_native_e8_gate/scripts/native_chart_emitter.py
+          python -I -B p104_dirty_zero_adapter.py
+          python -I -B p104_complete_gram_channel_stdlib.py
+          python -I -B p104_inplace_source.py
+          python -I -B p104_inplace_dyadic_target.py
+          python -I -B p104_inplace_side.py
+      - name: Verify both 216-input rank-optimal retimed programs
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: |
+          python -I -B p104_intersection_router.py
+          python -I -B p104_verify_intersection_router.py
+          python -I -B p104_eager_idle_retime.py
+      - name: Reconstruct physical E8 Clifford basis
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: |
+          python -I -B p104_physical_e8_isometry.py
+          python -I -B p104_minimal_symplectic.py
+          python -I -B p104_exact_native_factor.py
+          python -I -B p104_rank_r_native_recipes.py
+      - name: Verify both exact physical forward native child sets
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_routed_native_audit.py
+      - name: Verify physical ordinary Delta inverse-transpose native children
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_retimed_delta_native.py
+      - name: Verify all source and target conjugate/canonical intrinsic bridge identities
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_retimed_canonical_delta.py
+      - name: Exact independent forward and dual Gram matrices and tensor-grid premises
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_retimed_grid.py
+      - name: Compile and test explicit reversible 9-bit address/phase subledger
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_retimed_address_ledger.py
