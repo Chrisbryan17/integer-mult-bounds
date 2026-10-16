@@ -17,8 +17,8 @@ S=['S'+str(i) for i in range(104)]
 Y=['Y'+str(i) for i in range(104)]
 names=S+Y+H;idx={r:i for i,r in enumerate(names)}
 assert len(names)==216 and len(H)==8
-assert sum(e[0]=='add' for e in ev)==1510
-assert sum(e[0]=='sign' for e in ev)==26
+assert sum(e[0]=='add' for e in ev)==1506
+assert sum(e[0]=='sign' for e in ev)==28
 assert not any(e[0] in ('allocate_zero','erase_zero','scale') for e in ev)
 def replay(skip=-1,wrong_neg=-1):
     rows={r:{idx[r]:1} for r in names}
@@ -72,7 +72,7 @@ for i in range(216):
         assert sum(F[r].get(i,0)*dual[r].get(j,0) for r in names)==int(i==j)
 ident=next(i for i,e in enumerate(ev) if e[0]=='add' and e[1]=='Y0'
            and e[2]=='S0')
-neg=next(i for i,e in enumerate(ev) if e[0]=='sign' and e[1]=='S68'
+neg=next(i for i,e in enumerate(ev) if e[0]=='sign' and e[1]=='S'+str(json.loads((P/'P104_INPLACE_SOURCE_WORD.json').read_text())['pivots'][0])
          and tuple(fr[e[3]])!=())
 for mutation in ({'skip':ident},{'skip':ident+1},{'wrong_neg':neg}):
     try:wrong=replay(**mutation)
@@ -83,7 +83,7 @@ receipt={'schema':'p104-typed-I-minus-G-over-2-exact-replay/1',
  'formal_inputs':216,'gram_entries':10816,
  'inverse_transpose_entries':46656,'restored_sources':104,
  'restored_borrowed_dirty_helpers':8,'extra_clean_registers':0,
- 'signed_ADD':1510,'signed_NEG':26,'fractional_native_operators':0,
+ 'signed_ADD':1506,'signed_NEG':28,'fractional_native_operators':0,
  'child_calls':980,'rank_mass':1720,
  'mutants_rejected':3,'early_owned_Y':'OPEN',
  'decoded_input_output_owner':'OPEN',
