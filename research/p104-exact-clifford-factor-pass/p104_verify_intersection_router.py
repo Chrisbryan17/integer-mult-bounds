@@ -17,8 +17,7 @@ def span(f):
 
 def dist(A,B):
     a,b=span(A),span(B)
-    return a.bit_length()-1 if False else ((len(a).bit_length()-1)
-           +(len(b).bit_length()-1)-2*((len(a&b)).bit_length()-1))
+    return (len(a).bit_length()-1)+(len(b).bit_length()-1)-2*((len(a&b)).bit_length()-1)
 
 def check(label,source):
     old=json.loads((P/source).read_text())
@@ -85,6 +84,9 @@ def check(label,source):
     for y in Y:anchor[y].append(final[y])
     lower=sum(dist(fr[a],fr[b]) for seq in anchor.values()
               for a,b in zip(seq,seq[1:]))
+    required_down=sum(len(fr[a])-(len(span(fr[a])&span(fr[b])).bit_length()-1)
+                      for seq in anchor.values() for a,b in zip(seq,seq[1:]))
+    assert required_down==203
     assert rank==lower==1238
     assert transports==(687 if label=='G' else 703)
     return {'scope':'independent finite fixed-anchor model','status':'PASS',
@@ -94,6 +96,7 @@ def check(label,source):
             'native_calls_plus_source_ports':transports+208,
             'total_native_rank_mass_including_source':rank+208,
             'fixed_anchor_lower_bound':lower,
+            'unavoidable_full_source_descending_rank':required_down+104,
             'source_host_owner':'OPEN','all_size':'OPEN','new_kappa':False}
 
 if __name__=='__main__':
