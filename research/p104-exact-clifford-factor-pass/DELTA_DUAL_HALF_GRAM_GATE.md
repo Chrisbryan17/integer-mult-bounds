@@ -11,3 +11,22 @@ The forward/dual conditional combined finite bill is 1512 positive rank-r child 
 Reproduce by regenerating the pinned source and positive rank-r recipes and running p104_dual_native_check.py, p104_verify_dual_native.py, p104_half_gram_bridge.py, p104_verify_half_gram.py and p104_forward_dual_owner_audit.py. Two-version cold-replay CI is committed, not yet confirmed green.
 
 **Unresolved gates:** 100 Y/8 H owners, legal 16 scalers, G/2 and I-G/2 full source channel, accepted physical endpoints, paid whole-call recursion, optimized selected supplier comparison, independent moments, analytic/rounding, all-size theorem. Selected conditional κ remains 0.001672660197076918.
+
+
+## Physical E8 isometry: previous abstract labels were insufficient
+
+The original nine-bit compressed labels have **7168 mismatches among the 14400 required standard binary dot-product root pairings**. Although the earlier 514 Clifford recipes were internally phase exact, they were in an uncalibrated coordinate system and were **not a certificate of the physical supplier labels**. `p104_physical_e8_isometry.py` reconstructs the 9x9 Gram form, supplies a fully verified orthonormal basis over F2, proves all 14400 physical E8 pairings and all 104 rank-eight sink hyperplanes, and transforms all 239 frames. No abstract-to-physical identity assumption remains.
+
+`p104_isometric_native_compiler.py` re-emits and phase-corrects all 514 native recipes in that exact physical basis, again producing one positive rank-r child per transition, 756 occurrences and 1496 rank units. `p104_verify_isometric_native.py` independently checks all 514 forward and 514 conjugate-dual operators by the mathematically complete Clifford criterion: equal action on 18 symplectic generators and equal exact Gaussian amplitudes on computational address 0 and the nine singleton addresses. Because operators with identical unsigned symplectic action differ by a Pauli times scalar phase, those ten columns determine the residual Pauli X/Z and phase. Additionally it compares 14 complete 512-column matrices in each orientation.
+
+In the physical basis, the 8 source intrinsic adapters `Gamma_line C_q^-1` and 104 target intrinsic adapters `F9 C_q^-1 Gamma_sink^-1` are **exact rank-zero Gaussian monomials**, including full phase. All 112 use the exact Clifford generator/ten-column criterion; 3 source and 8 target adapters receive additional full 512-column checks. This certifies the finite native Clifford and boundary algebra for the pinned geometry, **not** 16 fractional scalers, 100 early Y owners, global hosting, the remaining I-G/2 correction, selected #1094 competitive costs, moments or the all-size theorem.
+
+Reproduction after generating the original word and inherited rank-r recipes:
+
+```sh
+python -I -B p104_physical_e8_isometry.py
+python -I -B p104_isometric_native_compiler.py
+python -I -B p104_verify_isometric_native.py
+```
+
+The GitHub workflow now contains these three extra cold checks. The conditional frontier remains unchanged.
