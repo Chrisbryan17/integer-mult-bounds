@@ -99,6 +99,13 @@ def run(filename):
     for t in range(104):anchors['Y'+str(t)].append(final['Y'+str(t)])
     lower=sum(distance(BASE[a],BASE[b]) for seq in anchors.values()
               for a,b in zip(seq,seq[1:]))
+    forced_down=sum(len(BASE[a])-len(intersection(BASE[a],BASE[b]))
+                    for seq in anchors.values() for a,b in zip(seq,seq[1:]))
+    forced_up=sum(len(BASE[b])-len(intersection(BASE[a],BASE[b]))
+                  for seq in anchors.values() for a,b in zip(seq,seq[1:]))
+    assert (forced_down,forced_up)==(203,1035)
+    assert forced_down==stats['descent_rank_mass']
+    assert forced_down+forced_up==lower
     assert lower==stats['rank_mass']==1238
     assert (prior['transports'],prior['rank_mass'])==(772,1512)
     assert stats['transports'] in (687,703)
@@ -111,6 +118,8 @@ def run(filename):
             'source_word_sha256':O['source_pin'],
             'original_counts':dict(prior),'new_counts':dict(stats),
             'lower_bound_rank_mass_fixed_anchors':lower,
+            'unavoidable_internal_descent_rank_mass':forced_down,
+            'unavoidable_full_source_inclusive_descent_rank_mass':forced_down+104,
             'savings_rank_mass':prior['rank_mass']-lower,
             'per_register_family':{k:dict(v) for k,v in by_role.items()},
             'owner_host_idle_tape_precision':'OPEN',
