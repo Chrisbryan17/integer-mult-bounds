@@ -17,7 +17,7 @@ S=['S%d'%j for j in range(104)]
 Y=['Y%d'%j for j in range(104)]
 names=S+Y+H;idx={r:i for i,r in enumerate(names)}
 assert len(names)==216 and len(H)==8
-assert sum(e[0]=='add' for e in ev)==1302
+assert sum(e[0]=='add' for e in ev)==1298
 assert not any(e[0] in ('scale','allocate_zero','erase_zero') for e in ev)
 def replay(skip=-1):
     data={r:{idx[r]:1} for r in names}
@@ -87,7 +87,7 @@ receipt={'status':'PASS_TYPED_INTEGER_EXACT',
  'formal_independent_inputs':216,'sources_restored':104,'dirty_H_restored':8,
  'full_104x104_entries':10816,'integer_dual_entries':46656,
  'strict_no_fractional_primitive':True,'strict_no_new_clean_registers':True,
- 'scalar_ADD':1302,'sign':10,'source_mutation_rejected':True,
+ 'scalar_ADD':1298,'sign':12,'source_mutation_rejected':True,
  'odd_denominator2_witness':list(odd),'native_owners':'OPEN',
  'caller_denominator2_and_rounding':'OPEN','all_size':'OPEN','new_kappa':False}
 (P/'P104_TYPED_INTEGER_RECEIPT.json').write_text(
