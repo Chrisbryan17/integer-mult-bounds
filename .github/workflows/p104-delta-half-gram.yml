@@ -1,0 +1,56 @@
+name: P104 delta dual and G-over-two contract
+on:
+  push:
+    branches:
+      - research/p104-delta-dual-half-gram-20261016
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-native-rational:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/p104-exact-clifford-factor-pass
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install exact-integer array matrix accelerator
+        run: python -m pip install 'numpy>=2.2,<3'
+      - name: Regenerate original source and exact Clifford factors
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: |
+          python -I -B p104_native_e8_gate/scripts/native_chart_emitter.py
+          python -I -B p104_minimal_symplectic.py
+          python -I -B p104_exact_native_factor.py
+          python -I -B p104_rank_r_native_recipes.py
+      - name: Regenerate arbitrary-dirty signed word
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: |
+          python -I -B p104_dirty_zero_adapter.py
+          python -I -B p104_verify_dirty_adapter.py
+          python -I -B p104_verify_dirty_logical_dual.py
+      - name: Independently verify positive-rank-r forward exact matrices
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_verify_rank_r_all_columns.py
+      - name: Regenerate exact conjugate Clifford native dual
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: |
+          python -I -B p104_dual_native_check.py
+          python -I -B p104_verify_dual_native.py
+      - name: Verify selected G-over-two interface and all 120 rational columns
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: |
+          python -I -B p104_half_gram_bridge.py
+          python -I -B p104_verify_half_gram.py
+      - name: Emit fail-closed full source and dual subledger
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_forward_dual_owner_audit.py
