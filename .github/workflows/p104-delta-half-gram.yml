@@ -54,3 +54,12 @@ jobs:
       - name: Emit fail-closed full source and dual subledger
         working-directory: research/p104-exact-clifford-factor-pass
         run: python -I -B p104_forward_dual_owner_audit.py
+      - name: Rebuild 9D physical E8 pairing isometry and all 104 sinks
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_physical_e8_isometry.py
+      - name: Regenerate true-physical 514 Clifford native recipes
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_isometric_native_compiler.py
+      - name: Independently verify physical native forward/dual and all 112 port adapters
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_verify_isometric_native.py
