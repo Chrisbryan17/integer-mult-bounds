@@ -1,0 +1,21 @@
+{
+  "schema": "selected1094-p104-historical-conditional-moment-snapshot/1",
+  "source": "CrocSwap/integer-mult-bounds selected PR #1094 conditional profile, as recorded in initial P104 36-file research archive",
+  "source_selected_record": "certificates/selected-result.json",
+  "m": 73,
+  "replicas": 16,
+  "baseline_width": 14336,
+  "selected_complex_b": "67018507072324140917/40000000000000000000000",
+  "complex_profile": {
+    "1": 349604,
+    "2": 60192,
+    "3": 62585,
+    "4": 20448,
+    "5": 11808,
+    "7": 7,
+    "8": 1152,
+    "48": 4866
+  },
+  "selected_kappa": "0.001672660197076918",
+  "disclaimer": "Frozen historical optimistic P104 screen input ONLY; NOT a native supplier invoice, new selected certificate or all-size theorem."
+}
