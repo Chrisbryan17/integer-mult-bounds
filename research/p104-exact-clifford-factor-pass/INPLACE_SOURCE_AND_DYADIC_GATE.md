@@ -172,3 +172,54 @@ confirmed**, and a passing finite test is not an all-size result.
    precision. A 104×104 finite result cannot alone establish a new κ.
 
 **Selected κ remains 0.001672660197076918. No new κ or full theorem.**
+
+## Additional finite physical inverse-transpose and ownership checkpoints
+
+`p104_inplace_chrono_dual.py` emits a literal **same-chronology ordinary
+inverse-transpose** of both full typed words: for each ADD
+`destination += sign * source` it emits
+`source += -sign * destination`, preserving all frame visits in conjugate
+`Delta = conjugate(Gamma)` charts; scalar signs transpose unchanged.
+`p104_verify_inplace_chrono_dual.py` independently replays both 216-variable
+dual words, verifies each source and helper response, and rejects an incorrect
+dual ADD sign or reversed event chronology. All **46,656 matrix entries per
+dual** agree with the exact triangular shear inverse-transpose.
+
+The 104 source intrinsic conjugate C(q) entrances/exits reuse explicitly
+opposite signed root-line operations, already lowered to **positive** native
+rank-one children and full 512-column verified. The eight physical pivot
+source entries/exits are separately conjugated and lowered to 16 positive F1
+children; `p104_inplace_pivot_delta_native.py` checks all 512 columns of
+each operator including global phase. The 514 physical E8 core transport duals
+retain the earlier independently checked exact Clifford action. Thus **980
+finite rank-r positive native calls, rank mass 1,720 per orientation** remain
+the exact stated local transport inventory. However, **ordinary canonical
+endpoint data charts are not the conjugate-Delta caller interface**, and the
+required phase/address/host adapters must still be admitted and charged.
+
+The fail-closed `p104_inplace_owner_boundary.py` scans the actual chronological
+event stream and reports **216 required distinct logical fields** (104 S,
+104 Y and eight arbitrarily dirty H), no new clean scratch, and 100 early
+borrow-compensation Y registers (104 early Y for the side program's identity
+prepass). Of the 980 native transport events, exactly **308 are rank-decreasing**
+with total rank mass **444** (104 source entrances and 204 core/pivot moves);
+672 are rank-increasing with mass 1,276. A positive child factorization
+proves exact operator realizability; it **does not** by itself assign legal
+chronological owners or make a nonmonotone source move affordable. These
+decreasing edges are now an explicit physical admission blocker, not an
+unpriced implicit free reset.
+
+Extra reproduction commands, after the typed words and positive native
+recipes are emitted:
+
+```sh
+python -I -B p104_inplace_chrono_dual.py
+python -I -B p104_verify_inplace_chrono_dual.py
+python -I -B p104_inplace_pivot_delta_native.py
+python -I -B p104_inplace_owner_boundary.py
+```
+
+A second full 104×104 physical owner assignment, per-side tape/precision
+invoice and selected strong comparator are still necessary before either
+exact moment engine can be applied to a legitimate candidate. All-size
+analytic transfer/rounding and bit-side H1–H5 remain unresolved. **No new κ.**
