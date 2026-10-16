@@ -1,0 +1,44 @@
+name: P104 exact phase factorization
+on:
+  push:
+    branches:
+      - research/p104-exact-clifford-phase-factor-20261016
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-matrix-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/p104-exact-clifford-factor-pass
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install vectorized exact integer checker
+        run: python -m pip install 'numpy>=2.2,<3'
+      - name: Regenerate original native word and verify pins
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_native_e8_gate/scripts/native_chart_emitter.py
+      - name: Exact 514-recipe symplectic decomposition
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_minimal_symplectic.py
+      - name: Build all signed phase-corrected factors
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_exact_native_factor.py
+      - name: Cold independent 512-column exact global-phase comparison
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_verify_all_columns.py
+      - name: Cold same-compiler full-column unmixed comparator
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_unmixed_comparator.py
