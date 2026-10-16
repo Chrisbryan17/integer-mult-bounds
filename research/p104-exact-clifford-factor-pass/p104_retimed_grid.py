@@ -7,9 +7,10 @@ For tensor payload depth lambda >= 1, an exact local implementation is on
 This is not a complete recursive multiplication/host/tape/all-size theorem.
 """
 from pathlib import Path
-import json
-from p104_native_e8_gate.scripts import native_chart_emitter as E
+import json,sys
 P=Path(__file__).resolve().parent
+sys.path.insert(0,str(P))
+from p104_native_e8_gate.scripts import native_chart_emitter as E
 rows_out={}
 for mode in ('G','I_minus_G_half'):
     W=json.loads((P/f'P104_INTERSECTION_{mode}.json').read_text())
