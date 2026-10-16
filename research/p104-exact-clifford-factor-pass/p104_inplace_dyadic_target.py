@@ -9,12 +9,12 @@ from pathlib import Path
 import json,collections
 P=Path(__file__).resolve().parent
 W=json.loads((P/'P104_INPLACE_SOURCE_WORD.json').read_text())
-assert W['new_clean_aggregate_registers']==0 and W['signed_ADD']==1302
+assert W['new_clean_aggregate_registers']==0 and W['signed_ADD']==1298
 assert sum(e[0]=='scale' for e in W['events'])==16
 assert all(e[1].startswith('S') for e in W['events'] if e[0]=='scale')
 events=[e for e in W['events'] if e[0]!='scale']
 cnt=collections.Counter(e[0] for e in events)
-assert cnt['add']==1302 and cnt['sign']==10 and cnt['scale']==0
+assert cnt['add']==1298 and cnt['sign']==12 and cnt['scale']==0
 assert cnt['transport']==772
 assert cnt['source_to_zero']==cnt['source_from_zero']==104
 out={'schema':'p104-inplace-dyadic-target-type/1',
@@ -25,7 +25,7 @@ out={'schema':'p104-inplace-dyadic-target-type/1',
  'input_104_target_encoding':'caller must provide numerator for denominator 2',
  'output_104_target_encoding':'caller must accept/propagate numerator and denominator 2',
  'source_type':'integer-valued',
- 'signed_ADD':1302,'signed_NEG':10,'fractional_scale_operations':0,
+ 'signed_ADD':1298,'signed_NEG':12,'fractional_scale_operations':0,
  'new_clean_aggregate_registers':0,'borrowed_dirty_helpers':8,
  'core_positive_native_children':756,'physical_source_positive_children':208,
  'eight_pivot_charts_in_out':16,'conditional_positive_native_children':980,
@@ -35,5 +35,5 @@ out={'schema':'p104-inplace-dyadic-target-type/1',
  'new_kappa':False,'events':events}
 (P/'P104_INPLACE_DYADIC_WORD.json').write_text(
  json.dumps(out,sort_keys=True,separators=(',',':'))+'\n')
-print('PASS_P104_TYPED_DYADIC_NO_FRACTIONAL_PRIMITIVE ADD=1302 SIGN=10'
+print('PASS_P104_TYPED_DYADIC_NO_FRACTIONAL_PRIMITIVE ADD=1298 SIGN=12'
       ' fractional_native=0 clean_X=0 conditional_child_mass=1720 caller_OPEN')
