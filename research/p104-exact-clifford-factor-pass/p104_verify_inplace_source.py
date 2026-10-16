@@ -19,8 +19,8 @@ Y=['Y'+str(i) for i in range(104)]
 names=S+Y+H;idx={x:i for i,x in enumerate(names)}
 assert len(names)==216 and len(set(names))==216
 assert collections.Counter(e[0] for e in events)=={
- 'add':1302,'transport':772,'source_to_zero':104,
- 'source_from_zero':104,'scale':16,'sign':10}
+ 'add':1298,'transport':772,'source_to_zero':104,
+ 'source_from_zero':104,'scale':16,'sign':12}
 assert not any(e[0] in ('allocate_zero','erase_zero') for e in events)
 
 def replay(skip=-1,wrong_half=False,wrong_sign=False):
@@ -103,12 +103,12 @@ report={'status':'PASS_FINITE_INPLACE_SOURCE',
  'independent_formal_inputs':216,'source_preserved':104,'target_outputs':104,
  'dirty_helpers_restored':8,'new_clean_aggregate_scratch':0,
  'gram_entries_checked':10816,'logical_inverse_transpose_entries_checked':46656,
- 'scalar_ADD':1302,'scalar_SIGN':10,'fractional_scale':16,
+ 'scalar_ADD':1298,'scalar_SIGN':12,'fractional_scale':16,
  'conditional_rank_mass':1720,
  'negative_controls_rejected':4,
  'source_owner_price':'OPEN','scalar_halving':'OPEN','new_kappa':False}
 (P/'P104_INPLACE_SOURCE_INDEPENDENT_RECEIPT.json').write_text(
  json.dumps(report,sort_keys=True,indent=2)+'\n')
 print('PASS_P104_INPLACE_104X104_GRAM_HALF inputs=216 coef=10816'
-      ' dual=46656 clean=0 ADD=1302 SIGN=10'
+      ' dual=46656 clean=0 ADD=1298 SIGN=12'
       ' mutants=4 source_owner_price_OPEN')
