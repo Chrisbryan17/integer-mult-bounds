@@ -1,0 +1,72 @@
+{
+  "schema": "p104-exact-phase-native-literal-ledger/1",
+  "date": "2026-10-16",
+  "source_word_sha256": "a5fca1d880512630d23691d2f8be5cf6074c43b4a7182a4bd149e411e2b6ef39",
+  "contract": "F2^9 Gamma(new) Gamma(old)^-1 with exact Gaussian global phase; eight clean helpers",
+  "scope": "identical fixed home-return E8 chart comparator only; counts not a full paid recursive invoice",
+  "mixed": {
+    "outputs": 104,
+    "clean_helpers_allocated": 8,
+    "clean_helpers_zero_erased": 8,
+    "arbitrary_dirty_helpers_supported": false,
+    "signed_adds": 292,
+    "transport_events": 756,
+    "unique_transports": 514,
+    "abstract_frame_rank": 1496,
+    "unoptimized_C": 4160,
+    "optimized_literal_gate_occurrences": {
+      "P": 1512,
+      "D": 2023,
+      "C": 1832,
+      "PH": 200
+    },
+    "affine_coset_corrected_occurrences": 168,
+    "extra_C_vs_abstract_rank": 336,
+    "nonroot_C_label_occurrences": 192,
+    "root_C_label_occurrences": 1640
+  },
+  "unmixed": {
+    "outputs": 104,
+    "clean_helpers_allocated": 0,
+    "signed_adds": 416,
+    "transport_events": 1144,
+    "unique_transports": 525,
+    "abstract_frame_rank": 2224,
+    "unoptimized_C": 5696,
+    "optimized_literal_gate_occurrences": {
+      "P": 2288,
+      "D": 3117,
+      "C": 2560,
+      "PH": 428
+    },
+    "affine_coset_corrected_occurrences": 168,
+    "extra_C_vs_abstract_rank": 336
+  },
+  "savings_restricted_only": {
+    "signed_adds": 124,
+    "abstract_frame_rank": 728,
+    "optimized_literal_C": 728
+  },
+  "required_unpriced": {
+    "recursive_child_admission": null,
+    "arbitrary_C_q_legality": null,
+    "phase_endpoint_conversion": null,
+    "inverse_transpose": null,
+    "source_read_and_mutation": null,
+    "helpers_owner_clean_provision": null,
+    "host_idle_and_tape": null,
+    "precision_and_rounding": null,
+    "optimized_selected1094_comparator": null,
+    "two_independent_exact_moment_engines": null,
+    "outer_theorem_bit_H1_H5": null
+  },
+  "acceptance": {
+    "finite_512_column_phase_equality": "PASS_LOCAL",
+    "remote_cold_replay": "NOT_RUN",
+    "actual_paid_native_supplier": "OPEN",
+    "complete_invoice": "OPEN",
+    "uniform_all_size": "OPEN",
+    "selected_conditional_kappa": "0.001672660197076918",
+    "new_kappa": false
+  }
+}
