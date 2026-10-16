@@ -1,0 +1,60 @@
+name: P104 fixed-anchor intersection native audit
+on:
+  push:
+    branches:
+      - research/p104-intersection-retime-rank-optimal-20261016
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-e8-intersection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/p104-exact-clifford-factor-pass
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install exact Gaussian checker
+        run: python -m pip install 'numpy>=2.2,<3'
+      - name: Generate the source-authenticated E8 and signed borrowed-dirty word
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: |
+          python -I -B p104_native_e8_gate/scripts/native_chart_emitter.py
+          python -I -B p104_dirty_zero_adapter.py
+      - name: Regenerate both 104-source in-place integer numerator words
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: |
+          python -I -B p104_complete_gram_channel_stdlib.py
+          python -I -B p104_inplace_source.py
+          python -I -B p104_inplace_dyadic_target.py
+          python -I -B p104_inplace_side.py
+      - name: Emit minimum-rank nested intersection routes for both words
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_intersection_router.py
+      - name: Independently check all 216 inputs and rank-metric optimality
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_verify_intersection_router.py
+      - name: Check early descent / late ascent chart occupancy
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_eager_idle_retime.py
+      - name: Reconstruct physical E8 isometry and rank-r factorization
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: |
+          python -I -B p104_physical_e8_isometry.py
+          python -I -B p104_minimal_symplectic.py
+          python -I -B p104_exact_native_factor.py
+          python -I -B p104_rank_r_native_recipes.py
+      - name: Verify signed Clifford exact phases for all new physical transports
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_routed_native_audit.py
