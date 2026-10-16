@@ -68,3 +68,12 @@ jobs:
       - name: Exact all-prefix coefficient bound and 7-bit finite scalar guard
         working-directory: research/p104-exact-clifford-factor-pass
         run: python -I -B p104_verify_inplace_prefix_guard.py
+      - name: Construct chronological conjugate Delta inverse-transpose words
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_inplace_chrono_dual.py
+      - name: Independent 216-variable ordinary inverse-transpose event proof
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_verify_inplace_chrono_dual.py
+      - name: Exact all-column physical conjugate E8 pivot children
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_inplace_pivot_delta_native.py
