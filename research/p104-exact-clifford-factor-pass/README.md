@@ -41,3 +41,38 @@ Original E8 decoder and term-preserving results: upstream #968, #1125 (Ali Romma
 4. Prove the uniform all-size compiler, analytic transfer/rounding, joint outer inequality and bit-side H1-H5 before any improvement claim.
 
 **Status:** finite full-column exact-phase local compiler result PASS; legal supplier OPEN; complete recursive invoice OPEN; all-size theorem OPEN.
+
+## Pushed executable package and replay
+
+The new branch now contains reproducible Python implementations and the three
+frozen, attributed native predecessor source snapshots. The word and optimized
+recipe JSON are deliberately generated rather than checked in as huge redundant
+text snapshots. This self-contained source package is **not** the same as the
+36-file source ZIP: the ZIP is still the original full scientific archive.
+
+From the repository root, with Python 3.10+ and NumPy installed:
+
+```bash
+cd research/p104-exact-clifford-factor-pass
+python3 -I -B p104_native_e8_gate/scripts/native_chart_emitter.py
+python3 -I -B p104_minimal_symplectic.py
+python3 -I -B p104_exact_native_factor.py
+python3 -I -B p104_verify_all_columns.py
+python3 -I -B p104_unmixed_comparator.py
+```
+
+The generator must reproduce frozen source-word SHA-256
+`a5fca1d880512630d23691d2f8be5cf6074c43b4a7182a4bd149e411e2b6ef39`
+or the optimizer refuses to continue. The final two programs use separate
+full-matrix exact-Gaussian arithmetic, not merely the symplectic equality
+assertions. All local results reported above were run on the independent full
+archive. The copied-pinned repository arrangement should be cold-replayed
+before any claim of remote CI acceptance.
+
+Vendored predecessor Git blobs (from verified fork branch
+`295f3757bf0834709ce9b8584e3f202c9acab3e9`):
+`native_chart_emitter.py` `c6937a5b26f7c35a915987708f6bbc9bdece32fc`;
+`verify_phase_exact.py` `832f9e883a3a4d2c178809bdce307a8f78e6d167`;
+`vendor/e8_instance.py` `543ba0335270f39ecc5c79569b7e45b956382e51`.
+
+**No main merge, selected frontier update, or κ promotion is part of this branch.**
