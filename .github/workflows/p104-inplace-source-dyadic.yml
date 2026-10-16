@@ -77,3 +77,6 @@ jobs:
       - name: Exact all-column physical conjugate E8 pivot children
         working-directory: research/p104-exact-clifford-factor-pass
         run: python -I -B p104_inplace_pivot_delta_native.py
+      - name: Fail-closed 216-role owner and 308 decreasing-transports gate
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_inplace_owner_boundary.py
