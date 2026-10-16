@@ -65,3 +65,6 @@ jobs:
       - name: Independent 216-column full side word, 46656 dual entries and mutants
         working-directory: research/p104-exact-clifford-factor-pass
         run: python -I -B p104_verify_inplace_side.py
+      - name: Exact all-prefix coefficient bound and 7-bit finite scalar guard
+        working-directory: research/p104-exact-clifford-factor-pass
+        run: python -I -B p104_verify_inplace_prefix_guard.py
