@@ -1,0 +1,29 @@
+name: P16 W2 exact Laurent and Clifford packing
+on:
+  push:
+    branches:
+      - research/p16-w2-coupled-query-lifting-20261022
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-batch-and-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/p16-joint-lab
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify selected current P16 10928/64620 exact rational invoice
+        run: python -I -B research/p16-joint-lab/frontier_rational_gate.py
+      - name: Cold exact full-operator, rank, determinant, and realpacking suite
+        run: python -I -B research/p16-joint-lab/test_p16_w2_batching.py
