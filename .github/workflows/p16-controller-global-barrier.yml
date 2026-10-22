@@ -1,0 +1,31 @@
+name: P16 global controller-family no-go certificate
+on:
+  push:
+    branches:
+      - research/p16-controller-global-no-go-20261022
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-family-certificate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/p16-joint-lab
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check source-selected P16 rational root and invoice
+        run: python -I -B research/p16-joint-lab/frontier_rational_gate.py
+      - name: Prove exact all-p, all-prefix restricted global barrier
+        run: python -I -B research/p16-joint-lab/controller_family_theorem.py
+      - name: Independent 65-digit numerical cross-check
+        run: python -I -B research/p16-joint-lab/controller_family_independent_check.py
