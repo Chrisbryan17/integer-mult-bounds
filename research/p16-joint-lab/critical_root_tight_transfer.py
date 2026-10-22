@@ -9,7 +9,8 @@ This imports the previous independent rational PR4470 raw-moment oracle.
 from fractions import Fraction as Q
 from math import factorial
 from pathlib import Path
-import json
+import json,sys
+sys.path.insert(0,str(Path(__file__).resolve().parent))
 from frontier_rational_gate import profiles,moment_interval
 
 K=Q('0.0030201659769')
@@ -121,7 +122,7 @@ def run():
   'status':'PASS_EXACT_CONDITIONAL_PARAMETER_SCREEN',
   'source_pins':{
    'native_PR4470':'b9a13c1673e0e9697de410de16e8bbf3207a7363',
-   'critical_theorem_PR4532':'644607ba59ebe401ac7ecd627ae7f3318a058aa5b2dbd5764b',
+   'critical_theorem_PR4532':'644607ba59ebe401ac7ecd627ae7f331f924d1b0',
    'transfer_PR4535':'a6d7237f697185e857090e174c23c1cb22c6563c',
    'outer_source':'research/pr4359-p7-padding/dependencies/compiler-refill/endpoint.py'},
   'kappa_candidate':str(K),'existing_selected':'0.00302015',
