@@ -1,0 +1,51 @@
+name: P16 GF2 contact-pair and exact rank-nine centre
+on:
+  push:
+    branches:
+      - research/p16-center-rank9-exact-search-20261022
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-bound-native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.13']
+    steps:
+      - name: Checkout new exact search code
+        uses: actions/checkout@v4
+        with:
+          path: workspace
+          sparse-checkout: |
+            research/p16-center-rank9-exact-search
+          sparse-checkout-cone-mode: false
+      - name: Checkout exact selected source #4470, not latest main
+        uses: actions/checkout@v4
+        with:
+          repository: CrocSwap/integer-mult-bounds
+          ref: b9a13c1673e0e9697de410de16e8bbf3207a7363
+          path: upstream
+          sparse-checkout: |
+            research/joint-helper-lattice
+            research/fresh-helper-boundary
+            research/kappa-rebuild/complex
+            research/kappa-causal-continuation/buffer-borrowing
+            research/missing-join-frame
+            research/t74-native-fast/vendor/native/new/code/borrow/vendor/clifford
+            research/kappa-function-composition/complex
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Reconstruct full source and search GF2-closed one/two-contact rewrites
+        run: python -I -B workspace/research/p16-center-rank9-exact-search/contact_pair_exact_scan.py upstream
+      - name: Independently check first rank9-centre forward 632 columns and real cost
+        run: python -I -B workspace/research/p16-center-rank9-exact-search/center9_forward_literal.py upstream
+      - name: Preserve fail-closed exact receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: p16-source-bound-rank9-${{ matrix.python-version }}
+          path: workspace/research/p16-center-rank9-exact-search/*RECEIPT.json
