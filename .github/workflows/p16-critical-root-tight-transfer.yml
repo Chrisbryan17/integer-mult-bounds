@@ -1,0 +1,29 @@
+name: P16 tighter critical-root conditional parameter proof
+on:
+  push:
+    branches:
+      - research/p16-critical-root-tight-transfer-20261022
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-point:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/p16-joint-lab
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify source-selected 10,928-target / 64,620-paid raw-root moment
+        run: python -I -B research/p16-joint-lab/frontier_rational_gate.py
+      - name: Verify 54 outer, four functional, exact 10^15-height absorption
+        run: python -I -B research/p16-joint-lab/critical_root_tight_transfer.py
