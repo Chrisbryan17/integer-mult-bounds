@@ -25,5 +25,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Verify pinned PR4470 skeleton and nonfree idle gauge obligations
         run: python -I -B research/p16-joint-lab/idle_gauge_obstruction.py
+      - name: Certify multivariate Laurent determinant and constructive lifting identity
+        run: python -I -B research/p16-joint-lab/idle_determinant_invariant.py
       - name: Verify published P16 exact rational selected baseline
         run: python -I -B research/p16-joint-lab/frontier_rational_gate.py
