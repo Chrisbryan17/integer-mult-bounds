@@ -45,3 +45,32 @@ A second terminal-helper audit checked all 326 rank-nine productive helpers in b
 A hypothetical full-p16 paid-profile replacement `F2+F2 -> F1+F3` preserves **both** total paid-job count and paid rank mass (4=4), while the target/productive profile stays identical. Its concavity gain at κ=0.00302017 is approximately `0.001572561671389161`, above the unchanged supplier's `0.000995111040669640` deficit. This is a *strict exact arithmetic sensitivity*, **not** a physically admitted rewrite. The search must find real operator-equivalent, source/owner-legal two-call regrouping across more than two local scalar contacts or using a different source graph, then replay 632 columns in both directions and recompute the full invoice.
 
 **Current scientific acceptance:** selected κ=0.00302015. Target κ=0.00302017 remains unproved.
+
+
+## One-contact proof, neutral-plateau triple experiment
+
+For each scalar contact constrained to share one frame W across L-role operands, let A_r and B_r be the preceding/following *required* subspace for each touched role r. The legal interval is
+
+`span(A_r for all r) ⊆ W ⊆ intersection(B_r for all r)`.
+
+For `0<t=1-κ<1`, the paid contribution from the adjacent transports is
+
+`sum_r [(dim W-dim A_r)^t + (dim B_r-dim W)^t]`.
+
+This is concave in the integer `dim W`. Therefore, at fixed neighboring anchors and scalar chronology, an optimal W must attain one of the **two realizable endpoint subspaces** (linear span of preceding spaces or intersection of following spaces). The source-pinned Dell scan tested all 611 nontrivial endpoint alternatives; none decreases the paid moment. This is a **restricted fixed-neighbor local-optimality theorem**, not a global optimization proof.
+
+A secondary neutral-plateau search accepted only moment-neutral first and second contact changes not touching C0. There were **two legal two-contact neutral plateaus**. Testing their adjacent third scalar contact found **two candidate follow-up endpoint moves and zero positive paid-moment gains**. This restricts the shallow neutral-chain route; it does not rule out deeper or initially costly joint rewrites, scalar DAG changes or alternative source operators.
+
+## Lower numerical threshold outside that family
+
+At κ=0.00302017, the selected full p16 moment deficit is `0.000995111040669639919598…`. A hypothetical exchange of **two paid rank-two calls** for **one paid rank-one plus one rank-three call** leaves both paid count and paid rank mass unchanged while saving
+
+`2 * 2^(1-κ) - 1^(1-κ) - 3^(1-κ) = 0.001572561671389161213557…`
+
+in the paid moment. This would yield approximately `0.000577450630719521…` positive full-controller moment if achieved by an operator-equivalent legal rewrite, with no other costs. **It is not yet such a rewrite.**
+
+Therefore the next design search should change the scalar dependency DAG or synthesize adjacent native child blocks jointly, targeting an exact F2,F2→F1,F3 redistribution (or stronger two-to-one F4 fusion) under an all-column Clifford/phase oracle. Do not treat the hypothetical histogram as a new exponent.
+
+## Local test and CI status
+
+The Dell independently ran `contact_pair_exact_scan.py` against the exact #4470 repository checkout and passed its structural assertions. The additional Python 3.11 and 3.13 GitHub Actions workflow was queued when last inspected; **hosted CI PASS is not asserted**. The separate 632-column forward rank9 paid profile was independently checked on the Dell before codifying its reproduction script.
