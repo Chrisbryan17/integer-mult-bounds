@@ -18,3 +18,30 @@ The first candidate involves forward event B: scalar ordinal 754 and the earlier
 6. Run two independent exact moments and prove BIT/outer/all-size transfer and rounding.
 
 No such admitted new circuit exists in this branch yet. Historical and contributor attribution preserved. New research for Chrisbryan17 with substantial GPT-6 assistance, Apache-2.0.
+
+## Observed exact Dell replay and expanded contact search
+
+The new source-pinned `contact_pair_exact_scan.py` was fetched directly from GitHub and executed on the Dell against the untouched selected #4470 checkout. It returned:
+
+```
+PASS_PR4470_GF2_CLOSED_SPAN_SINGLE 611 PAIR 478 POSITIVE 8 WITHOUT_OWNED_C0 0
+```
+
+The **611 exact one-contact endpoint candidates** contained 239 moment-neutral changes and 372 strictly worse changes. Under the restricted consecutive-contact, one/two-endpoint search (478 combined attempts), all eight nominally favorable pair candidates touch the owned C0 centre workspace. **No two-contact, owner-independent paid-moment improvement was found in this restricted family.** This is not a global minimization proof.
+
+The independently rerun original 632-column **forward** evaluator admitted one correctly widened rank-9 centre together with the preceding L92/L108 scalar contact and C0 clear/copy retyping. The source program had 21,461 events and the recompiled candidate 21,460 events. Its actual paid profile was:
+
+```
+previous: {1:2237,2:388,3:494,4:147,5:36,8:8}
+candidate:{1:2236,2:388,3:494,4:146,5:37,8:7,9:1}
+```
+
+At κ=0.00302017, the candidate's **actual paid-moment saving is NEGATIVE**, approximately `-0.983025958668824786...` per full native call, and paid rank mass increases by one. The mutation is therefore **not** a supplier improvement. Ordinary inverse-transpose, absolute Clifford phase and whole-controller host/owner costs are still open.
+
+A second terminal-helper audit checked all 326 rank-nine productive helpers in both orientations. **None has a removable final rank-one child** under the selected exact scalar chronology. The simplest paired rank-nine-to-eight / rank-four-to-five productive reshuffle would therefore require retiming earlier compulsory contacts; it cannot be asserted from terminal relabeling alone.
+
+### New smaller quantitative target
+
+A hypothetical full-p16 paid-profile replacement `F2+F2 -> F1+F3` preserves **both** total paid-job count and paid rank mass (4=4), while the target/productive profile stays identical. Its concavity gain at κ=0.00302017 is approximately `0.001572561671389161`, above the unchanged supplier's `0.000995111040669640` deficit. This is a *strict exact arithmetic sensitivity*, **not** a physically admitted rewrite. The search must find real operator-equivalent, source/owner-legal two-call regrouping across more than two local scalar contacts or using a different source graph, then replay 632 columns in both directions and recompute the full invoice.
+
+**Current scientific acceptance:** selected κ=0.00302015. Target κ=0.00302017 remains unproved.
