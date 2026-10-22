@@ -59,3 +59,9 @@ python3 -I -B test_p16_w2_batching.py
 ```
 
 Native full-output miter, determinant and rank barriers, and real-pair packing are independently checked mathematical results. Hosted GitHub CI remains a separate acceptance check.
+
+## Source-specific BIT reality caveat
+
+A direct inspection of the retained `research/query-thinned-controllers/PROOF.md` and `BIT-CONTROLLER.json` confirms the selected BIT supplier is a **binary F2 projector/involution architecture** with 111 ports, not a real Gaussian-integer FFT. The exact real-pair complex packing identity therefore **cannot be installed into its existing binary child alphabet without a new embedding theorem**. That theorem must preserve binary arbitrary-source independence and exact recovery, count the Gaussian encoding/conjugation/reconstruction and evaluate the resulting BIT paid moment. The real-pair identity is mathematically exact but not a ready-made BIT supplier.
+
+The frontier-selected **complex** native supplier has arbitrary independent Gaussian-complex helpers; no complex-linear packing of two such arbitrary fields into one complex field is injective. Hence the successful real-pair test creates no extra selected productive-helper credit and cannot presently improve the complete P16 raw κ.
