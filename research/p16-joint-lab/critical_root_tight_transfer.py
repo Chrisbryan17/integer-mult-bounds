@@ -95,6 +95,7 @@ def run():
  lo,hi=1-THETA_HI,1-THETA_LO
  assert moment_interval(target,paid,lo)['positive']
  assert moment_interval(target,paid,hi)['negative']
+ assert moment_interval(target,paid,S)['positive']
  assert THETA_HI<1-S and lo>S
  m,c,f=outer(K,D)
  assert all(v>K for v in m.values())
