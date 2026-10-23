@@ -36,6 +36,8 @@ jobs:
             research/fresh-helper-boundary
             research/kappa-causal-continuation/buffer-borrowing
             research/kappa-rebuild/complex
+            research/kappa-function-composition/complex
+            research/t74-native-fast/vendor/native/new/code/borrow/vendor/clifford
           sparse-checkout-cone-mode: false
       - uses: actions/setup-python@v5
         with:
@@ -46,6 +48,12 @@ jobs:
       - name: Check four-CNOT GL9 repairs on 512 input vectors
         run: |
           python -I -B contribution/research/p16-cao-coupled-registers/transvection_repair.py --source frozen-source --prior contribution/research/p16-cao-coupled-registers/BRIDGE_RECEIPT.json --out contribution/research/p16-cao-coupled-registers/TRANSVECTION_RECEIPT.json
+      - name: Exact two-register GL9 physical gauge including both 632-column interpreters and absolute phase
+        run: |
+          python -I -B contribution/research/p16-cao-coupled-registers/physical_bridge_gate.py --source frozen-source --out contribution/research/p16-cao-coupled-registers/PHYSICAL_GAUGE_RECEIPT.json
+      - name: Reject attractive but semantically invalid lower-cost native profile
+        run: |
+          python -I -B contribution/research/p16-cao-coupled-registers/optimistic_bridge_attempt.py --source frozen-source --out contribution/research/p16-cao-coupled-registers/OPTIMISTIC_REJECTED_RECEIPT.json
       - name: Scoped field algebra packing theorem F3
         run: |
           python -I -B contribution/research/p16-cao-coupled-registers/field_packing_barrier.py --out contribution/research/p16-cao-coupled-registers/FIELD_RECEIPT.json
