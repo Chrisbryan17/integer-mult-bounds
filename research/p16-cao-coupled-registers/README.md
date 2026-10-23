@@ -29,3 +29,23 @@ Python standard library only. Source dependency: unchanged upstream `research/wa
 Take one algebraic G/G⁻¹ pair and **construct a coupled scalar/warp program whose entire operator remains exactly unchanged on arbitrary inputs**. Charge every restoration, owned buffer and frame climb; regenerate the full forward/backward 632-column words, verify absolute phases, and only then price the full P16 invoice and compiler. Simply presenting an invertible G is insufficient.
 
 Credit Cao Yifan/intqwq #4610, Cinna Davis #4470, Dugongue, zxv, Jacob Alan Sussman and all inherited contributors. New scoped research prepared for Chrisbryan17 with GPT-6 assistance; no practical speedup or independent complete theorem verification claimed.
+
+## Physical two-register integration checkpoint — 2026-10-23
+
+The new `physical_bridge_gate.py` performs a **real source-bound insertion**, not merely a GL9 span computation. It takes the source-exact four-controlled-XOR transvection `G(x)=x XOR (16 if parity(x & 75) else 0)` carrying frame 211 to frame 238, constructs the full quadratic-phase-corrected native Clifford `K_G` as operator 73, and conjugates the existing scalar ADD on two interacting persistent registers. It does so in **both** exact forward and inverse-transpose words.
+
+Local tests on the uploaded 10.6 MB source snapshot:
+- Both independent literal interpreters verify all **632 arbitrary input columns in both orientations** and restore owned `C0`.
+- All four forward/backward signed rank-zero native Clifford cases reproduce the **exact absolute phase and tableau**; the complete `K_G` itself is involutive.
+- The original 21,449-event word becomes a 21,453-event word, adding **four native warp events per orientation**. The paid rank histogram stays `{1:2201,2:412,3:510,4:127,5:40,8:8}` and the complete 16-pair controller remains at **64,404** paid calls. The new warp implementation cost is **not** assumed free. **No higher κ is claimed.**
+- `optimistic_bridge_attempt.py` tests the attractive local change `-4 H1+2 H2`, giving exact local moment improvement ~`0.00836937347` at Cao's exponent. Both exact semantic checks **reject** it: the one-register compensating bridge changes the operator. An isolated cheaper histogram is not an admitted supplier.
+- An adversarial corrupted scalar coefficient and corrupted frozen source witness are rejected.
+
+This establishes a **phase-exact, operator-preserving bridge gadget** and pinpoints why it is **not** itself a cost improvement. In the 108 original bridge windows, the first subsequent touched scalar contact occurs at rank 8 for 102 backward cases and rank 4 for six forward cases, **never at rank 9**. Thus immediate cancellation at a full-rank exit is not available in the screened windows; a winning design must carry a paid, semantically consistent gauge across another scalar dependency or restructure the scalar graph.
+
+Reproduce:
+```bash
+python -I -B research/p16-cao-coupled-registers/physical_bridge_gate.py --source /path/to/frozen-source --out /tmp/PHYSICAL_GAUGE_RECEIPT.json
+python -I -B research/p16-cao-coupled-registers/optimistic_bridge_attempt.py --source /path/to/frozen-source --out /tmp/OPTIMISTIC_REJECTED_RECEIPT.json
+```
+The complete standalone experimental ZIP also includes `test_native_bridge_gate.py`, two source-bound receipts, a SHA256 manifest and a negative-control source corruption test. Retained tape, precision, stock, all-size compiler and actual scalar/warp execution implications are **not** newly proved.
