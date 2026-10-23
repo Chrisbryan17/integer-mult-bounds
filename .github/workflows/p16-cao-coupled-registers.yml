@@ -54,6 +54,9 @@ jobs:
       - name: Reject attractive but semantically invalid lower-cost native profile
         run: |
           python -I -B contribution/research/p16-cao-coupled-registers/optimistic_bridge_attempt.py --source frozen-source --out contribution/research/p16-cao-coupled-registers/OPTIMISTIC_REJECTED_RECEIPT.json
+      - name: Verify exact rank-two restoration penalty for every transvection
+        run: |
+          python -I -B contribution/research/p16-cao-coupled-registers/immediate_inverse_cost_gate.py --source frozen-source --bridges contribution/research/p16-cao-coupled-registers/TRANSVECTION_RECEIPT.json --out contribution/research/p16-cao-coupled-registers/IMMEDIATE_REPAIR_COST_RECEIPT.json
       - name: Scoped field algebra packing theorem F3
         run: |
           python -I -B contribution/research/p16-cao-coupled-registers/field_packing_barrier.py --out contribution/research/p16-cao-coupled-registers/FIELD_RECEIPT.json
