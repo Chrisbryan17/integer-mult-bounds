@@ -1,0 +1,53 @@
+name: Cao P16 coupled-register exact bridge evidence
+on:
+  push:
+    branches:
+      - research/p16-cao-coupled-registers-20261023
+  pull_request:
+    paths:
+      - 'research/p16-cao-coupled-registers/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  frozen-circuit-bridges:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: contribution
+          sparse-checkout: |
+            research/p16-cao-coupled-registers
+          sparse-checkout-cone-mode: false
+      - uses: actions/checkout@v4
+        with:
+          repository: CrocSwap/integer-mult-bounds
+          ref: 20bb93cd990d2ff683e4d0fc56b87a42cd5d3296
+          path: frozen-source
+          sparse-checkout: |
+            research/kappa-round3-warp-20261022
+            research/warp-interface-20261022
+            research/joint-helper-lattice
+            research/fresh-helper-boundary
+            research/kappa-causal-continuation/buffer-borrowing
+            research/kappa-rebuild/complex
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact coupled sibling-register chart and GL9 reconstruction
+        run: |
+          python -I -B contribution/research/p16-cao-coupled-registers/source_bound_bridge_replay.py --source frozen-source --output contribution/research/p16-cao-coupled-registers/BRIDGE_RECEIPT.json
+      - name: Scoped field algebra packing theorem F3
+        run: |
+          python -I -B contribution/research/p16-cao-coupled-registers/field_packing_barrier.py --out contribution/research/p16-cao-coupled-registers/FIELD_RECEIPT.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cao-p16-coupled-${{ matrix.python-version }}
+          path: contribution/research/p16-cao-coupled-registers/*RECEIPT.json
