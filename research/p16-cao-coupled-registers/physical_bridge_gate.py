@@ -106,7 +106,8 @@ def run(root):
     assert mutated
     rejected=False
     try:
-        rows,_=X.literal_replay(V,deepcopy(c),bad,False)
+        badenv=deepcopy(c);badenv["local_profile"]=PROFILE;badenv["R"]=408
+        rows,_=X.literal_replay(V,badenv,bad,False)
         rejected=any(rows["L",i]!=V.expected(("L",i),[],False,False) for i in range(632))
     except (ValueError,AssertionError):rejected=True
     assert rejected
