@@ -40,6 +40,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python -I -B contribution/research/p16-cao-paid-fusion/f2_pair_fusion_search.py frozen-source
       - run: python -I -B contribution/research/p16-cao-paid-fusion/h1_h1_to_h2_owner_screen.py frozen-source
+      - run: python -I -B contribution/research/p16-cao-paid-fusion/fusion_geometry_dual.py --source frozen-source --output contribution/research/p16-cao-paid-fusion/FUSION_GEOMETRY_RECEIPT.json
       - uses: actions/upload-artifact@v4
         with:
           name: cao-p16-fusion-${{ matrix.python-version }}
