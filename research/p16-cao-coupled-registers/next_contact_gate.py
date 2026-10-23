@@ -7,7 +7,7 @@ import argparse,gzip,hashlib,json,sys
 from collections import Counter
 from pathlib import Path
 
-PIN="cfcd36b40326d7a5815edb5313444379b3fb756b27d5201c561574c085cc0dd"
+PIN="cfcd36b40326d7a5815e1db5313444379b3fb756b27d5201c561574c085cc0dd"
 
 def run(root,prior):
     payload=gzip.decompress((root/"research/kappa-round3-warp-20261022/ACTUAL-WORD.json.gz").read_bytes())
