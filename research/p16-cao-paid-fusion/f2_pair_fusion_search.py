@@ -28,9 +28,11 @@ def run():
     raw={d:[deepcopy(e) for e in p if e[0]!='climb'] for d,p in orig.items()}
     a,b=raw['forward'],raw['backward']
     assert len(a)==len(b)
-    assert all((u[0],u[2] if u[0]=='scalar' else None)==
-               (v[0],v[2] if v[0]=='scalar' else None)
-               for u,v in zip(a,b))
+    direction_frame_mismatches=sum(
+        u[0]!='scalar' or v[0]!='scalar' or u[2]!=v[2]
+        for u,v in zip(a,b) if u[0]=='scalar' or v[0]=='scalar')
+    # Native dual words need not share every old contact frame. Never
+    # assume they do; only replay a candidate against both orientations.
     frames=c['frames'];spans=[frozenset(F.span(v)) for v in frames]
     dim=[len(s).bit_length()-1 for s in spans]
     before={};after={}
@@ -92,6 +94,7 @@ def run():
        'source':'20bb93cd990d2ff683e4d0fc56b87a42cd5d3296',
        'native_SHA':json.loads((ROOT/'research/kappa-round3-warp-20261022/ACTUAL-WORD-FREEZE.json').read_text())['canonical_payload_sha256'],
        'f2_f2_pure_rank_screen':dict(checks),
+       'nonidentical_oriented_scalar_contact_labels':direction_frame_mismatches,
        'admitted_improvement':False,'claimed_new_kappa':False,'top':[]}
     # Candidate acceptance demands a full compile, both directions, and
     # actual moment improvement in the recompiled paid histogram.
