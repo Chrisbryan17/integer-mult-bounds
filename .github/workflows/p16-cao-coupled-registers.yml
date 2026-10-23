@@ -43,6 +43,9 @@ jobs:
       - name: Exact coupled sibling-register chart and GL9 reconstruction
         run: |
           python -I -B contribution/research/p16-cao-coupled-registers/source_bound_bridge_replay.py --source frozen-source --output contribution/research/p16-cao-coupled-registers/BRIDGE_RECEIPT.json
+      - name: Check four-CNOT GL9 repairs on 512 input vectors
+        run: |
+          python -I -B contribution/research/p16-cao-coupled-registers/transvection_repair.py --source frozen-source --prior contribution/research/p16-cao-coupled-registers/BRIDGE_RECEIPT.json --out contribution/research/p16-cao-coupled-registers/TRANSVECTION_RECEIPT.json
       - name: Scoped field algebra packing theorem F3
         run: |
           python -I -B contribution/research/p16-cao-coupled-registers/field_packing_barrier.py --out contribution/research/p16-cao-coupled-registers/FIELD_RECEIPT.json
