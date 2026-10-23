@@ -1,0 +1,40 @@
+name: Cao P16 full 16-way controller cost audit
+on:
+  push:
+    branches:
+      - research/p16-cao-controller-20261023
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-controller:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: contribution
+          sparse-checkout: |
+            research/p16-cao-controller
+          sparse-checkout-cone-mode: false
+      - uses: actions/checkout@v4
+        with:
+          repository: CrocSwap/integer-mult-bounds
+          ref: 20bb93cd990d2ff683e4d0fc56b87a42cd5d3296
+          path: frozen-source
+          sparse-checkout: |
+            research/kappa-round3-warp-20261022
+            research/kappa-round6-compiler-tightening-20261022
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -I -B contribution/research/p16-cao-controller/controller_split_audit.py frozen-source
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cao-p16-controller-${{ matrix.python-version }}
+          path: contribution/research/p16-cao-controller/*RECEIPT.json
