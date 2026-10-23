@@ -1,3 +1,0 @@
-# Retain exact predecessor and execution-receipt bytes.
-vendor/** -text -whitespace
-evidence/** -text -whitespace

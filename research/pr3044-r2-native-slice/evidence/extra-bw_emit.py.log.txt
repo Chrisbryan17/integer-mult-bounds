@@ -1,2 +1,0 @@
-PASS emitted forward 22748 events
-PASS emitted backward 22748 events

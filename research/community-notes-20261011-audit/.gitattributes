@@ -1,4 +1,0 @@
-# Preserve exact replay receipts and raw tool output.
-*.txt -text -whitespace
-*.json -text
-*.gz -text

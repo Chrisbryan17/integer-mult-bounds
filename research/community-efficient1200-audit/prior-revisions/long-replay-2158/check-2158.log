@@ -1,1 +1,0 @@
-['env', 'TMPDIR=/private/tmp', '/tmp/pr-efficient200-venv/bin/python', '-B', 'research/invoice-mutant-coverage/verify.py']

@@ -1,4 +1,0 @@
-import StreamShadowRowUpdate
-
-#print axioms StreamShadowRowUpdate.scalRun_append
-#print axioms StreamShadowRowUpdate.S_append_event

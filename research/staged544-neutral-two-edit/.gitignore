@@ -1,9 +1,0 @@
-__pycache__/
-*.pyc
-FIRST-*.json
-SEARCH-*.json
-PAIRS-*.json
-NOVEL-*.json
-GAINS-*.json
-SEMANTICS-*.json
-*.log

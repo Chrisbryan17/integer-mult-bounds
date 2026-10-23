@@ -1,2 +1,0 @@
-# Preserve exact predecessor bytes bound by VENDOR.json.
-vendor/** -text

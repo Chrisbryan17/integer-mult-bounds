@@ -1,1 +1,0 @@
-PASS gzip header variation accepted; payload mutation and raw JSON mutation rejected; source containers preserved

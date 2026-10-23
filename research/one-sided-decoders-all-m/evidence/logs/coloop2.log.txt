@@ -1,2 +1,0 @@
-N size 52
-min rank of N(r) minus <=3 lines: 8

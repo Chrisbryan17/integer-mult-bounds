@@ -1,3 +1,0 @@
-'HPEInventoryFixture.clean' does not depend on any axioms
-'HPEInventoryFixture.ext' depends on axioms: [propext]
-'HPEInventoryFixture.bad' depends on axioms: [HPEInventoryFixture.extra]

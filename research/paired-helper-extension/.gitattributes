@@ -1,5 +1,0 @@
-# Preserve the exact pinned predecessor bytes, including CRLF source files.
-vendor/** -text -whitespace
-data/** -text
-allocation/** -text
-evidence/** -text

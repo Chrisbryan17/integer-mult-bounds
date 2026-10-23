@@ -1,3 +1,0 @@
-* -text
-# Preserve raw retained logs, including their original whitespace.
-evidence/**/*.log -whitespace

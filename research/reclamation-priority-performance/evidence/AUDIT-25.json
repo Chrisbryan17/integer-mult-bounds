@@ -1,8 +1,0 @@
-{
-  "eligible_candidates": 856174,
-  "h": 25,
-  "queries": 40749,
-  "scope": "Every eligible candidate, including candidates beyond the chosen slot; original state/frame oracle",
-  "status": "PASS",
-  "unfiltered_candidates": 217004227
-}

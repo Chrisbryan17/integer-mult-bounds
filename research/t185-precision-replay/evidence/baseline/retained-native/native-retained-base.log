@@ -1,5 +1,0 @@
-PASS native
-PASS ledgers
-PASS local-replay
-PASS wrappers
-PASS phases

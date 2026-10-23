@@ -1,6 +1,0 @@
-__pycache__/
-.verification-work/
-reproduction/
-third_party/drat-trim/drat-trim
-third_party/drat-trim/drat-trim.exe
-!proofs/*-checker.log

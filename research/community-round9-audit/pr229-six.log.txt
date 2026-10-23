@@ -1,1 +1,0 @@
-[check] beats-six.json matches a fresh run byte for byte (--max-types 6)

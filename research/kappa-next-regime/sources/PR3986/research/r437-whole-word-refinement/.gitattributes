@@ -1,3 +1,0 @@
-inputs/** -text -diff
-R437-LICENSE -text
-R437-UPSTREAM-NOTICE.md -text -diff

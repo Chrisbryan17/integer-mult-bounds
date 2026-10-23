@@ -1,2 +1,0 @@
-* -filter -text
-vendor/*.py whitespace=cr-at-eol

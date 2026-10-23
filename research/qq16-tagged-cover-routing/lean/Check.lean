@@ -1,2 +1,0 @@
-import QQ16CoverRoute
-#print axioms QQ16CoverRoute.semidirect_pull_push

@@ -1,2 +1,0 @@
-# Immutable scientific captures retain original CRLF/LF bytes.
-evidence/** -text whitespace=cr-at-eol

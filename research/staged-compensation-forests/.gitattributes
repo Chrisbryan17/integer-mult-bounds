@@ -1,2 +1,0 @@
-frozen/producers/bw_emit.py -text whitespace=trailing-space,space-before-tab,cr-at-eol
-frozen/producers/bw_transport.py -text whitespace=trailing-space,space-before-tab,cr-at-eol

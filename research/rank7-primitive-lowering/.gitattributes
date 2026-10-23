@@ -1,2 +1,0 @@
-# Retain the exact predecessor words and attribution bytes.
-vendor/** -text -filter

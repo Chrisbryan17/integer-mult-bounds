@@ -1,1 +1,0 @@
-"""Retained, authenticated predecessor filter."""

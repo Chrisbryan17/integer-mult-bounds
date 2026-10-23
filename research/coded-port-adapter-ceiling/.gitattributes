@@ -1,2 +1,0 @@
-# Preserve exact upstream source bytes, including CRLF.
-source/* -text

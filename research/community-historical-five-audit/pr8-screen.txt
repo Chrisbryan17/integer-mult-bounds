@@ -1,1 +1,0 @@
-PASS finite bit screen: 50 50 50

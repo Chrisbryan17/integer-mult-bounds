@@ -1,3 +1,0 @@
-# Byte-exact pins: disable EOL conversion for every file in this package so the
-# SHA-256 pins in SOURCES.json/verify.py survive checkout (the agent-86 EOL trap).
-* -text
