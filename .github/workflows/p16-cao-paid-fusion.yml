@@ -1,0 +1,44 @@
+name: Cao P16 source-bound exact GF2 paid fusion
+on:
+  push:
+    branches:
+      - research/p16-cao-paid-fusion-20261023
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gf2-fusion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: contribution
+          sparse-checkout: |
+            research/p16-cao-paid-fusion
+          sparse-checkout-cone-mode: false
+      - uses: actions/checkout@v4
+        with:
+          repository: CrocSwap/integer-mult-bounds
+          ref: 20bb93cd990d2ff683e4d0fc56b87a42cd5d3296
+          path: frozen-source
+          sparse-checkout: |
+            research/kappa-round3-warp-20261022
+            research/warp-interface-20261022
+            research/joint-helper-lattice
+            research/fresh-helper-boundary
+            research/kappa-causal-continuation/buffer-borrowing
+            research/kappa-rebuild/complex
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -I -B contribution/research/p16-cao-paid-fusion/f2_pair_fusion_search.py frozen-source
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cao-p16-fusion-${{ matrix.python-version }}
+          path: contribution/research/p16-cao-paid-fusion/*RECEIPT.json
