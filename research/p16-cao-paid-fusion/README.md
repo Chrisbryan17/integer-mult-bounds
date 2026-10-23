@@ -11,3 +11,21 @@ This does **not** rule out two-child fusion across several scalar contacts, diff
 Run `python -I -B research/p16-cao-paid-fusion/f2_pair_fusion_search.py /path/to/frozen-repo`.
 
 Source `CrocSwap/integer-mult-bounds@20bb93cd990d2ff683e4d0fc56b87a42cd5d3296`. Credit Cao Yifan and source contributors; new search for Chrisbryan17 with GPT-6 assistance, Apache-2.0.
+
+
+## New exact target: one H1+H1 → H2 fusion per native call
+
+The independent follow-up to upstream #5243 derives the **whole physical occurrence inventory**, rather than merely positing the rank histogram. `h1_h1_to_h2_owner_screen.py` tests the **entire frozen 21,449-event native word** in both orientations, and the actual complete #4610 `ARITHMETIC.json` at κ=0.0030220.
+
+At this target the current source's paid-minus-productive moment deficit is `0.05540972462695090068…`. The hypothetical complete change of 18 occurrences by `-36 H1+18 H2` yields exact-rank mass preservation (752 remains 752), reduces the total paid call count from 64,404 to **64,386**, and increases the complete moment by `0.07532994405390762427…`, giving a positive conditional *arithmetic* margin `0.01992021942695672360…`.
+
+**Actual all-word source screen on the Dell:**
+
+| Native orientation | Rank-one events | Adjacent rank-one pairs | Same persistent register | Distinct persistent registers |
+|---|---:|---:|---:|---:|
+| Forward | 2,201 | 671 | **0** | **671** |
+| Inverse-transpose | 2,201 | 671 | **0** | **671** |
+
+Thus the obvious *same-field, adjacent rank-one* fusion **does not exist in the emitted word**. All 671 adjacent opportunities would need an actual cross-register joint operator or restructuring to put both relative transformations on one properly paid owned source, followed by output fan-out and restoration. A tensor product identity alone does not establish that physical packing or allow a single Gaussian child call in this model.
+
+The new receipt includes 12 concrete event/frame/register examples per orientation and the complete hypothetical moment calculation, but retains `physical_fusion_admitted=false` and `new_kappa_proved=false`. This is a **source-grounded bridge/ownership problem**, not a new multiplication exponent. Credit DreamingOfClouds' concurrently open upstream #5226/#5243, Cao #4610 and the inherited contributor chain. No new priority for the target is claimed.
