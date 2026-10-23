@@ -49,3 +49,11 @@ python -I -B research/p16-cao-coupled-registers/physical_bridge_gate.py --source
 python -I -B research/p16-cao-coupled-registers/optimistic_bridge_attempt.py --source /path/to/frozen-source --out /tmp/OPTIMISTIC_REJECTED_RECEIPT.json
 ```
 The complete standalone experimental ZIP also includes `test_native_bridge_gate.py`, two source-bound receipts, a SHA256 manifest and a negative-control source corruption test. Retained tape, precision, stock, all-size compiler and actual scalar/warp execution implications are **not** newly proved.
+
+### Exact immediate-compensation cost (108 bridges)
+
+`immediate_inverse_cost_gate.py` replays the **actual canonical Fourier/Clifford relative operator** for each of the 108 incomparable equal-rank source/target frame pairs. In both native orientations, `F_old^† F_new` has **Fourier rank exactly 2**, not zero. The rank-zero `K_G` warp transforms the payload; it is not a free identity between those two frames.
+
+At t=1−0.0030217758, the attractive local `−4H1+2H2` histogram change gains `0.00836937347005493640...`, but immediate identity restoration before the next fixed scalar requires one `H2` costing approximately `1.9958153132649725...`. Net local gain is `−1.98744593979491759539...`. The test verifies **102 rank-eight and six rank-four** cases, on both exact Clifford orientations.
+
+This **rules out the immediate undo + unchanged-next-scalar strategy only**. It is not a general lower bound against further coupled scalar/contact rewrites, changes to the owner interface or novel physically valid combined operators. Neither this result nor the phase-exact gauge insertion increases κ.
